@@ -1,12 +1,14 @@
 //API keys
 const WeatherURL = "https://api.openweathermap.org";
 const WeatherKey = "d649dbc7935a0994373059b2dbf6bed6";
+let inputHistory = []
 
 //inputs from HTML
 
 let inputSearch = $("#search-input")
 let inputForm = $("#search-form")
-let inputHistory = []
+let inputSearchHistory  = $("#history")
+
 
 
 function fetchLocation(search){ //this is grabbing the value fetchLocation(search); at bottom
@@ -28,6 +30,18 @@ $.ajax({
       inputHistory.push(search);  //adding to the search history
 
       localStorage.setItem("search-history", JSON.stringify(inputHistory));  //adding to local storage
+
+      inputSearchHistory.html("")
+
+      for(let i = 0; i < inputHistory.length; i++){ //looping through the users input history
+        let btn = $("<button>");
+        btn.attr("type", "button")
+        btn.addClass("history-btn btn-history")
+
+        btn.attr("data-search", inputHistory [i])
+        inputSearchHistory.append(btn)
+
+      }
 
     }
 
