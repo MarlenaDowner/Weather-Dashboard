@@ -34,6 +34,20 @@ function appendInputHistory(search){ //thsi will do the valyes
   renderInputHistory() 
 }
 
+function pullWeather(location){
+  let lat = location.lat;
+  let long = location.lon;
+
+  let city = location.name;
+
+  let qureyWeatherURL = `${WeatherURL}/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=${WeatherKey};`
+
+  console.log(qureyWeatherURL)
+
+}
+
+
+
 
 function fetchLocation(search){ //this is grabbing the value fetchLocation(search); at bottom
   let queryURL = `${WeatherURL}/geo/1.0/direct?q=${search}&limit=5&appid=${WeatherKey}`;
@@ -48,13 +62,15 @@ $.ajax({
       alert("Location not found, try again")
     }else{
       appendInputHistory(search)
+      pullWeather(response[0])
+
     }
 
- // Log the queryURL
- console.log(queryURL);
+//  // Log the queryURL
+//  console.log(queryURL);
 
- // Log the resulting object
- console.log(response);
+//  // Log the resulting object
+//  console.log(response);
 
 })}
 
@@ -74,9 +90,10 @@ function submitInputForm(event){
   let search = inputSearch.val().trim();
 
   fetchLocation(search);
+  inputSearch.val("");
+
 
 }
-
 
 pullInputHistory()
 inputForm.on("submit", submitInputForm);
