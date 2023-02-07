@@ -9,10 +9,12 @@ let inputForm = $("#search-form")
 function submitInputForm(event){
 
   event.preventDefault();
-  alert()
+
+
+  alert(inputSearch.val().trim());
 }
 
-inputForm.on("submit", )
+inputForm.on("submit", submitInputForm);
 
 
 
