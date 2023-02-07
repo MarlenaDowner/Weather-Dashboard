@@ -164,3 +164,7 @@ function clickSearchHistory(event){
 pullInputHistory()
 inputForm.on("submit", submitInputForm);
 inputSearchHistory.on("click", clickSearchHistory)
+
+
+
+
