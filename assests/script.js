@@ -79,6 +79,9 @@ today.html("");
 today.append(card);
 }
 
+// function renderForecast(weatherData){
+//   let headcol = $
+// }
 
 function pullWeather(location){
   let latitude  = location.lat;
@@ -95,7 +98,7 @@ function pullWeather(location){
     method: "GET"
   }).then(function(response){
     renderCurrent(city, response.list[0]);
-    //renderForecast(data.list);
+    renderForecast(data.list);
   })
 
 }
@@ -146,5 +149,18 @@ function submitInputForm(event){
 
 }
 
+function clickSearchHistory(event){
+  if (!$(event.target).hasClass("btn-history")){
+    return
+  }
+  let search = $(event.target).attr("data-search")
+
+  fetchLocation(search);
+  inputForm.val("");
+
+
+}
+
 pullInputHistory()
 inputForm.on("submit", submitInputForm);
+inputSearchHistory.on("click", clickSearchHistory)
