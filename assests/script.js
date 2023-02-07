@@ -1,25 +1,24 @@
-//API keys
-var APIKey = "d649dbc7935a0994373059b2dbf6bed6";
-var queryURL = "https://api.openweathermap.org/data/2.5/weather?" + "q=Bujumbura,Burundi&appid=" + APIKey;
-
-// Event listener for all button elements
-$("button").on("click", function() {})
-
  // In this case, the "this" keyword refers to the "search-button" that was clicked
-var search = $(this).attr("search-button");
+//  var search = $(this).attr("search-button");
 
-//pulling request
-$.ajax({
-    url: queryURL,
-    method: "GET"
-  })
-  
-.then(function(response) {
+//inputs from HTML
 
- // Log the queryURL
- console.log(queryURL);
+let inputSearch = $("#search-input")
+let inputForm = $("#search-form")
 
- // Log the resulting object
- console.log(response);
+function submitInputForm(event){
 
-});
+  event.preventDefault();
+  alert()
+}
+
+inputForm.on("submit", )
+
+
+
+
+//API keys
+const WeatherURL = "https://api.openweathermap.org";
+const WeatherKey = "d649dbc7935a0994373059b2dbf6bed6"
+
+
