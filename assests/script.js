@@ -35,18 +35,16 @@ function appendInputHistory(search){ //thsi will do the valyes
 }
 
 function pullWeather(location){
-  let lat = location.lat;
-  let long = location.lon;
+  let latitude  = location.lat;
+  let longitude = location.lon;
 
   let city = location.name;
 
-  let qureyWeatherURL = `${WeatherURL}/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=${WeatherKey};`
+  let qureyWeatherURL = `${WeatherURL}/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&appid=${WeatherKey}`;
 
   console.log(qureyWeatherURL)
 
 }
-
-
 
 
 function fetchLocation(search){ //this is grabbing the value fetchLocation(search); at bottom
@@ -92,11 +90,7 @@ function submitInputForm(event){
   fetchLocation(search);
   inputSearch.val("");
 
-
 }
 
 pullInputHistory()
 inputForm.on("submit", submitInputForm);
-
-
-
