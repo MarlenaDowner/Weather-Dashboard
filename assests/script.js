@@ -34,6 +34,52 @@ function appendInputHistory(search){ //thsi will do the valyes
   renderInputHistory() 
 }
 
+
+function renderCurrent(city, weatherInput) {
+  let date = moment().format("D/M/YYYY");
+  let tempurtureC = weatherInput["main"]["temp"];
+  let windSpeed = weatherInput["wind"]["speed"];
+  let humidity = weatherInput["main"]["humidity"];
+  let today = $("#today");
+
+  let icon = `https://api.openweathermap.org/img/w/${weatherInput.weather[0].icon}.png`;
+
+  let iconDis = weatherInput.weather[0].description || weatherInput[0].main
+
+  let temp = $("<p>")
+  let wind = $("<p>")
+  let weatherIcon = $("<img>")
+  let humidityEl = $("<p>") 
+  let card = $("<div>")
+  let cardMain = $("<div>")
+  let header = $("<h2>")
+
+card.attr("class", "card");
+
+cardMain.attr("class", "card-body");
+
+card.append(cardMain);
+
+header.attr("class", "h3 card-title")
+temp.attr("class", "card-text")
+wind.attr("class", "card-text")
+humidityEl.attr("class", "card-text");
+
+header.text(`${city} (${date})`)
+weatherIcon.attr("src", icon);
+weatherIcon.attr("alt", iconDis);
+
+header.append(weatherIcon);
+temp.text(`Temp ${tempurtureC} C`);
+wind.text(`Wind ${windSpeed} KPH`);
+humidityEl.text(`Humidity ${humidity} %`);
+cardMain.append(header, temp, wind, humidityEl);
+
+today.html("");
+today.append(card);
+}
+
+
 function pullWeather(location){
   let latitude  = location.lat;
   let longitude = location.lon;
@@ -43,6 +89,14 @@ function pullWeather(location){
   let qureyWeatherURL = `${WeatherURL}/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&appid=${WeatherKey}`;
 
   console.log(qureyWeatherURL)
+
+  $.ajax({
+    url: qureyWeatherURL,
+    method: "GET"
+  }).then(function(response){
+    renderCurrent(city, response.list[0]);
+    //renderForecast(data.list);
+  })
 
 }
 
