@@ -11,8 +11,8 @@ let inputSearch = $("#search-input")
 let inputForm = $("#search-form")
 
 
-function fetchLocation(){
-  let 
+function fetchLocation(search){ //this is grabbing the value fetchLocation(search); at bottom
+  let queryURL = `${WeatherURL}/geo/1.0/direct?q=£=${search}&limit=5appid=${WeatherKey}`;
 
 }
 
