@@ -20,6 +20,10 @@ My motivation was to build a 5 Day Weather Forecast app to retrieve weather data
 
 ## Links
 
+https://github.com/MarlenaDowner/Weather-Dashboard
+
+https://marlenadowner.github.io/Weather-Dashboard/
+
 
 ## License
 MIT License
